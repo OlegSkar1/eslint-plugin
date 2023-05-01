@@ -20,15 +20,31 @@ const ruleTester = new RuleTester({
 });
 ruleTester.run('paths-checker', rule, {
   valid: [
-    // give me some code that won't trigger a warning
+    {
+      filename:
+        'C:\\study\\production_project\\src\\features\\EditableProfileCard\\ui\\EditableProfileCard\\EditableProfileCard.tsx',
+      code: "import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'",
+      errors: [],
+    },
   ],
 
   invalid: [
     {
-      code: "import { NotificationType } from '../../model/types/notification';",
-      errors: [
-        { message: 'В рамках одного модуля путь должен быть относительным' },
-      ],
+      filename:
+        'C:\\study\\production_project\\src\\features\\EditableProfileCard\\ui\\EditableProfileCard\\EditableProfileCard.tsx',
+      code: "import { fetchProfileData } from 'features/EditableProfileCard/model/services/fetchProfileData/fetchProfileData'",
+      errors: [{ message: 'В рамках одного модуля путь должен быть относительным' }],
+    },
+    {
+      filename:
+        'C:\\study\\production_project\\src\\features\\EditableProfileCard\\ui\\EditableProfileCard\\EditableProfileCard.tsx',
+      code: "import { fetchProfileData } from '@/features/EditableProfileCard/model/services/fetchProfileData/fetchProfileData'",
+      errors: [{ message: 'В рамках одного модуля путь должен быть относительным' }],
+      options: [
+        {
+          alias: '@'
+        }
+      ]
     },
   ],
 });
