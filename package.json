@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-olegskar-fsd-checker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "plugin for fsd paths and slices",
   "keywords": [
     "eslint",
