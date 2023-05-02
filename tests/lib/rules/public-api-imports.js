@@ -112,6 +112,7 @@ ruleTester.run('public-api-imports', rule, {
           messageId: 'publicApi',
         },
       ],
+      output: "import { getArticleData } from '@/entities/Article';",
       options: [
         {
           alias: '@',
@@ -147,6 +148,7 @@ ruleTester.run('public-api-imports', rule, {
           messageId: 'publicApi',
         },
       ],
+      output: null,
       options: [
         {
           alias: '@',
@@ -167,6 +169,7 @@ ruleTester.run('public-api-imports', rule, {
           messageId: 'publicApi',
         },
       ],
+      output: null,
       options: [
         {
           alias: '@',
