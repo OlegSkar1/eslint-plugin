@@ -86,22 +86,6 @@ ruleTester.run('public-api-imports', rule, {
         },
       ],
     },
-    {
-      filename:
-        'E:\\study\\production_project\\src\\features\\EditableProfileCard\\model\\slice\\profileCardSlice.test.ts',
-      code: "import { ProfileCardSchema } from '@/features/ProfileCardSchema';",
-      errors: [],
-      options: [
-        {
-          alias: '@',
-          testFilesPatterns: [
-            '**/*.test.ts',
-            '**/*.stories.tsx',
-            '**/StoreDecorator.tsx',
-          ],
-        },
-      ],
-    },
   ],
 
   invalid: [
@@ -128,6 +112,7 @@ ruleTester.run('public-api-imports', rule, {
           messageId: 'testingPublicApi',
         },
       ],
+      output: null,
       options: [
         {
           alias: '@',
@@ -164,6 +149,27 @@ ruleTester.run('public-api-imports', rule, {
       filename:
         'E:\\study\\production_project\\src\\shared\\config\\storybook\\StoreDecorator.tsx',
       code: "import { articleReducer } from '@/entities/Article/testing/file.tsx'",
+      errors: [
+        {
+          messageId: 'testingPublicApi',
+        },
+      ],
+      output: "import { articleReducer } from '@/entities/Article/testing'",
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\shared\\config\\storybook\\StoreDecorator.tsx',
+      code: "import { articleReducer } from '@/entities/Article'",
       errors: [
         {
           messageId: 'testingPublicApi',
