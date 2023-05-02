@@ -145,10 +145,10 @@ ruleTester.run('public-api-imports', rule, {
       code: "import { ProfileCardSchema } from '@/features/ProfileCardSchema/testing/file.tsx'",
       errors: [
         {
-          messageId: 'publicApi',
+          messageId: 'testingPublicApi',
         },
       ],
-      output: null,
+      output: "import { ProfileCardSchema } from '@/features/ProfileCardSchema/testing'",
       options: [
         {
           alias: '@',
@@ -166,10 +166,10 @@ ruleTester.run('public-api-imports', rule, {
       code: "import { articleReducer } from '@/entities/Article/testing/file.tsx'",
       errors: [
         {
-          messageId: 'publicApi',
+          messageId: 'testingPublicApi',
         },
       ],
-      output: null,
+      output: "import { articleReducer } from '@/entities/Article/testing'",
       options: [
         {
           alias: '@',
