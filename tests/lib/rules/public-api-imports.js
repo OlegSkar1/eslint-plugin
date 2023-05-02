@@ -30,11 +30,75 @@ ruleTester.run('public-api-imports', rule, {
       ],
     },
     {
-      code: " import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';",
+      code: "import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';",
       errors: [],
       options: [
         {
           alias: '@',
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\shared\\config\\storybook\\StoreDecorator.tsx',
+      code: "import { articleCommentReducer } from '@/pages/ArticleDetailsPage/testing';",
+      errors: [],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\features\\EditableProfileCard\\model\\slice\\profileCardSlice.test.ts',
+      code: "import { ProfileCardSchema } from '@/features/ProfileCardSchema/testing';",
+      errors: [],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\features\\EditableProfileCard\\model\\slice\\profileCardSlice.test.ts',
+      code: "import { ProfileCardSchema } from './ProfileCardSchema';",
+      errors: [],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\features\\EditableProfileCard\\model\\slice\\profileCardSlice.test.ts',
+      code: "import { ProfileCardSchema } from '@/features/ProfileCardSchema';",
+      errors: [],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
         },
       ],
     },
@@ -43,10 +107,74 @@ ruleTester.run('public-api-imports', rule, {
   invalid: [
     {
       code: "import { getArticleData } from '@/entities/Article/model/selectors/getArticleData/getArticleData';",
-      errors: [{ message: 'Абсолютный импорт разрешен только из PublicApi (index.ts)' }],
+      errors: [
+        {
+          messageId: 'publicApi',
+        },
+      ],
       options: [
         {
           alias: '@',
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\features\\EditableProfileCard\\forbidden.ts',
+      code: "import { ProfileCardSchema } from '@/features/ProfileCardSchema/testing'",
+      errors: [
+        {
+          messageId: 'testingPublicApi',
+        },
+      ],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\shared\\StoreDecorator.tsx',
+      code: "import { ProfileCardSchema } from '@/features/ProfileCardSchema/testing/file.tsx'",
+      errors: [
+        {
+          messageId: 'publicApi',
+        },
+      ],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
+    {
+      filename:
+        'E:\\study\\production_project\\src\\shared\\config\\storybook\\StoreDecorator.tsx',
+      code: "import { articleReducer } from '@/entities/Article/testing/file.tsx'",
+      errors: [
+        {
+          messageId: 'publicApi',
+        },
+      ],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.stories.tsx',
+            '**/StoreDecorator.tsx',
+          ],
         },
       ],
     },
