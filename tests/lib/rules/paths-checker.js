@@ -34,6 +34,7 @@ ruleTester.run('paths-checker', rule, {
         'C:\\study\\production_project\\src\\features\\EditableProfileCard\\ui\\EditableProfileCard\\EditableProfileCard.tsx',
       code: "import { fetchProfileData } from 'features/EditableProfileCard/model/services/fetchProfileData/fetchProfileData'",
       errors: [{ message: 'В рамках одного модуля путь должен быть относительным' }],
+      output: "import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'"
     },
     {
       filename:
@@ -42,9 +43,24 @@ ruleTester.run('paths-checker', rule, {
       errors: [{ message: 'В рамках одного модуля путь должен быть относительным' }],
       options: [
         {
-          alias: '@'
-        }
-      ]
+          alias: '@',
+        },
+      ],
+      output:
+        "import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'",
+    },
+    {
+      filename:
+        'C:\\study\\production_project\\src\\features\\EditableProfileCard\\EditableProfileCard.tsx',
+      code: "import { fetchProfileData } from '@/features/EditableProfileCard/fetchProfileData'",
+      errors: [{ message: 'В рамках одного модуля путь должен быть относительным' }],
+      options: [
+        {
+          alias: '@',
+        },
+      ],
+      output:
+        "import { fetchProfileData } from './fetchProfileData'",
     },
   ],
 });
